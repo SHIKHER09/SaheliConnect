@@ -205,6 +205,9 @@ const Registration = () => {
               >
                 Sign Up
               </Button>
+              <Link href="/login" variant="body2">
+                    {"I have an account"}
+                  </Link>
               
             </form>
           </Box>

@@ -4,11 +4,9 @@ import { Button, Container, Paper, Typography } from '@mui/material';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 
 const images = [
-    'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    'https://media.istockphoto.com/id/1410391090/photo/crystal-globe-putting-on-moss.webp?b=1&s=612x612&w=0&k=20&c=CksdIKZkvwKrOzoCk1VdBzbWK5nP0LXmddXvpaQO5tA=',
-    'https://cdn.pixabay.com/photo/2014/04/14/20/11/pink-324175_640.jpg',
-    'https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_640.jpg',
-];
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVptrS7kVop1PAa6f4I6_znlj926FliWqW_I7_6vV7TQkGYGMAA40osUb6xWyVnaB00N0&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkhJXfqjtoA5eHjS8gg2Zn9Q6TgzL9EFyBmawzA1XjXicGP3YPYHxf7aLAXi19CPB3XoE&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz7nW7NUXsdRcVcQK0Xx8BxUrw5ZzeUFAwH_zNtpwSuHHZX3VPPLufe-nBEYFTHFBy0RM&usqp=CAU'];
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
