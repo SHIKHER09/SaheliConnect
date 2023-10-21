@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import AppsIcon from '@mui/icons-material/Apps';
 import AppsOutageIcon from '@mui/icons-material/AppsOutage';
+// import Logo from "./assets/Logo.jpg";
 
 const pages = []; // Define the pages you want in the navigation menu
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -57,7 +58,6 @@ function Nav() {
     <AppBar position="static">
       <div style={{ width: "100vw", padding: "0 20px" ,backgroundColor:"black",borderBottom:".5px", borderBottomColor:"white",borderBottomStyle:"groove"}}>
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap

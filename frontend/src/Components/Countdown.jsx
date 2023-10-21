@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Countdown() {
-  const [countdown, setCountdown] = useState(23);
+  const [countdown, setCountdown] = useState(-6);
   const [date, setDate] = useState(1); // Set the initial date
   let came = false;
   let curr=new Date();

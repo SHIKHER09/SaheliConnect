@@ -81,6 +81,8 @@ export default function Calendar() {
       <div style={{ display: "flex", justifyContent: "center", maxwidth: "100dvw", overflowX: "hidden", color: "white", gap: "4rem ",backgroundColor:"white",paddingTop:"3vh" }}>
         <div style={{ border: "2px", borderStyle: "double", borderColor: "pink", backgroundColor: "rgb(175,185,192)",  maxHeight: "40vh",minHeight:"25vh", width: "30vw",  borderRadius: '20px',display:"flex",alignItems:"center",justifyContent:"center" ,borderColor:"rgba(0, 255, 255, 0.150)"}}>
           <Countdown />
+          
+
         </div>
 
         {/* to do */}
