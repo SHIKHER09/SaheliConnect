@@ -1,34 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+
+import Countdown from './Countdown';
 import Tods from './Tods';
-
-// const firebaseConfig = {
-//   apiKey: 'YOUR_API_KEY',
-//   authDomain: 'YOUR_AUTH_DOMAIN',
-//   projectId: 'YOUR_PROJECT_ID',
-//   storageBucket: 'YOUR_STORAGE_BUCKET',
-//   messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
-//   appId: 'YOUR_APP_ID',
-// };
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBjzJYTpEt5M0WIV9jqFgKMTQJR5Td8sYA",
-//   authDomain: "saheli-65af3.firebaseapp.com",
-//   projectId: "saheli-65af3",
-//   storageBucket: "saheli-65af3.appspot.com",
-//   messagingSenderId: "77260084573",
-//   appId: "1:77260084573:web:f7effa9aeb2887af5d04b4",
-//   measurementId: "G-Q2J0DSLT3L"
-// };
-
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
 
 
 export default function Calendar() {
-   
-  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     getTodos();
@@ -74,7 +50,7 @@ export default function Calendar() {
     await setDoc(todosRef, { todos: newTodos });
     getTodos();
   };
-  
+
   const toggleTodo = async (id) => {
     const todosRef = doc(db, 'todos', 'my-todos');
     const todoSnap = await getDoc(todosRef);
@@ -97,20 +73,21 @@ export default function Calendar() {
     getTodos();
   };
 
- 
+
   return (
-    <div  style={{display:"flex",justifyContent:"center",maxwidth:"100dvw",overflowX:"hidden"}}>
-      {/* calendar */}
+    <div style={{backgroundColor:"white"}}>
 
-    <LocalizationProvider dateAdapter={AdapterDayjs} style={{maxWidth:"30vw",padding:"0",margin:"0"}}>
-      <DateCalendar style={{maxWidth:"40vw",padding:"0",margin:"0 10vw",overflow:"hidden",WebkitOverflowScrolling: "touch"}} />
-    </LocalizationProvider>
+      <h2 style={{ paddingLeft: "5vw",color:"black" ,fontSize:"26px",paddingTop:"4vh"}}>Reminders</h2>
+      <div style={{ display: "flex", justifyContent: "center", maxwidth: "100dvw", overflowX: "hidden", color: "white", gap: "4rem ",backgroundColor:"white",paddingTop:"3vh" }}>
+        <div style={{ border: "2px", borderStyle: "double", borderColor: "pink", backgroundColor: "rgb(175,185,192)",  maxHeight: "40vh",minHeight:"25vh", width: "30vw",  borderRadius: '20px',display:"flex",alignItems:"center",justifyContent:"center" ,borderColor:"rgba(0, 255, 255, 0.150)"}}>
+          <Countdown />
+        </div>
 
-    {/* to do */}
+        {/* to do */}
 
-    <Tods></Tods>
-    
-
+        <Tods></Tods>
+      </div>
     </div>
+
   )
 }

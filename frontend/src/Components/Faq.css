@@ -1,0 +1,32 @@
+.faq-container {
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .faq-container>h2{
+    text-align: center;
+  }
+  
+  .faq-question {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    margin: 5px 0;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  
+  .faq-question.open {
+    background-color:transparent;
+  }
+  
+  .faq-answer {
+    background-color: gray;
+    border: 1px solid #00ff8c;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 24px;
+  }
+  

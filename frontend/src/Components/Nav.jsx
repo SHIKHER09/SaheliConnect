@@ -16,10 +16,13 @@ import AppsOutageIcon from '@mui/icons-material/AppsOutage';
 
 const pages = []; // Define the pages you want in the navigation menu
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings1 = ['Calendar', 'Reminders', 'Diary','History', 'Share', 'Career Guidance'];
 
 function Nav() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav1, setAnchorElNav1] = React.useState(null);
+  const [anchorElUser1, setAnchorElUser1] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -35,10 +38,24 @@ function Nav() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleOpenNavMenu1 = (event) => {
+    setAnchorElNav1(event.currentTarget);
+  };
+  const handleOpenUserMenu1 = (event) => {
+    setAnchorElUser1(event.currentTarget);
+  };
+
+  const handleCloseNavMenu1 = () => {
+    setAnchorElNav1(null);
+  };
+
+  const handleCloseUserMenu1 = () => {
+    setAnchorElUser1(null);
+  };
 
   return (
     <AppBar position="static">
-      <div style={{ width: "100vw", padding: "0 20px" }}>
+      <div style={{ width: "100vw", padding: "0 20px" ,backgroundColor:"black",borderBottom:".5px", borderBottomColor:"white",borderBottomStyle:"groove"}}>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -56,7 +73,9 @@ function Nav() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <h4 style={{letterSpacing:"0px",fontStyle:"helvetica"}}>
+              SaheliConnect
+            </h4>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -72,7 +91,7 @@ function Nav() {
             </IconButton>
             <Menu
               id="menu-appbar"
-              anchorEl={anchorElNav}
+              anchorEl={anchorElNav1}
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
@@ -82,14 +101,14 @@ function Nav() {
                 vertical: 'top',
                 horizontal: 'left',
               }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              open={Boolean(anchorElNav1)}
+              onClose={handleCloseNavMenu1}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={handleCloseNavMenu1}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -130,14 +149,14 @@ function Nav() {
             <Box style={{ width: "3vw", zIndex: "9" ,display:'flex',alignItems:"center"}}>
               <AppsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 3 }} />
               <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <IconButton onClick={handleOpenUserMenu1} sx={{ p: 0 }}>
                < AppsIcon style={{color:"white"}}/>
                 </IconButton>
               </Tooltip>
               <Menu
                 sx={{ mt: '45px' }}
                 id="menu-appbar-user"
-                anchorEl={anchorElUser}
+                anchorEl={anchorElUser1}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
@@ -147,12 +166,12 @@ function Nav() {
                   vertical: 'top',
                   horizontal: 'right',
                 }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
+                open={Boolean(anchorElUser1)}
+                onClose={handleCloseUserMenu1}
               >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                {settings1.map((setting1) => (
+                  <MenuItem key={setting1} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting1}</Typography>
                   </MenuItem>
                 ))}
               </Menu>

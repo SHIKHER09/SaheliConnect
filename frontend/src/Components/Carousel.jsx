@@ -27,12 +27,12 @@ const Carousel = () => {
   }, [activeIndex]);
 
   return (
-    <div style={{ Width:"80vw",height:"65vh",padding:"2vw 5vw" }}>
-      <Paper elevation={3} style={{ position: 'relative' }}>
+    <div style={{ Width:"80vw",height:"82vh",padding:"2vw 5vw" }}>
+      <Paper elevation={3} style={{ position: 'relative',borderRadius:"30px",overflow:"hidden",width:"100%",height:"100%",border:"1px",borderColor:"cyan",borderStyle:"groove" }}>
         <img
           src={images[activeIndex]}
           alt={`Slide ${activeIndex + 1}`}
-          style={{ width: '100%', maxHeight: '55vh',objectFit:"cover" }}
+          style={{ width: '100%',height: '100%',objectFit:"cover" }}
         />
         <Button
           onClick={goToPreviousSlide}
@@ -47,9 +47,7 @@ const Carousel = () => {
           <KeyboardArrowRight />
         </Button>
       </Paper>
-      {/* <Typography variant="h6" align="center">
-        Slide {activeIndex + 1}
-      </Typography> */}
+      
     </div>
   );
 };

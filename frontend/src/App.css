@@ -5,6 +5,7 @@
     box-sizing: border-box;
   }
   html,body{
+    background-color: rgb(18,18,20);
     width:100%;
     min-height: 100vh;
   }

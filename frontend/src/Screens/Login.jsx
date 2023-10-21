@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Web3 from 'web3';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,17 +13,81 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ABI from './ABI.json';
 
-function Login() {
-  const [email, setEmail] = useState('');
+// function Login() {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log({
+//       email,
+//       password,
+//     });
+//   };
+
+const Login = () => {
+  const [web3, setWeb3] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [accounts, setAccounts] = useState([]);
+
+  const [uid, setUid] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    initWeb3();
+  }, []);
+
+  const initWeb3 = async () => {
+    if (typeof window.ethereum !== 'undefined') {
+      const web3 = new Web3(window.ethereum);
+      try {
+        await window.ethereum.enable();
+        setWeb3(web3);
+
+        const accounts = await web3.eth.getAccounts();
+        setAccounts(accounts);
+      } catch (error) {
+        console.error('User denied access to accounts.');
+      }
+    } else {
+      console.error('Web3 not found. Install MetaMask or use an Ethereum-enabled browser.');
+    }
+  };
+
+  useEffect(() => {
+    if (web3) {
+      initContract();
+    }
+  }, [web3]);
+
+  const initContract = () => {
+    const contractABI = ABI;
+    const contractAddress = '0x8f36c9F0a2374a9E2f41f3F5589e16f4c27633e5'; 
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+    setContract(contract);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({
-      email,
-      password,
-    });
+    if (!contract || !uid || !password) {
+      return;
+    }
+
+    try {
+      const accounts = await web3.eth.getAccounts();
+      const userId = await contract.methods.loginUser(1, password).call({ from: accounts[0]});
+
+      if (userId > 0) {
+        alert('Login successful. User ID: ' + userId);
+      } else {
+        alert('Login failed. Invalid email or password.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Login failed.');
+    }
   };
 
   const defaultTheme = createTheme();
@@ -66,13 +131,12 @@ function Login() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="Number"
+                label="Enter your uid"
+                name="uid"
                 autoFocus
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={uid}
+                onChange={(e) => setUid(e.target.value)}
               />
               <TextField
                 margin="normal"

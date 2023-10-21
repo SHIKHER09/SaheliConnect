@@ -4,7 +4,12 @@
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+  /* background-color: rgb(18,18,20); */
+  /* color: white; */
 }
 
+.react-calendar{
+  background-color: aqua;
+}
 
 

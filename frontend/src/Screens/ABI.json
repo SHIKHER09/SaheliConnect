@@ -1,0 +1,203 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_username",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_password",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_email",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_age",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_dateOfPeriodDay",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_previousMenstrualProblems",
+                "type": "string"
+            }
+        ],
+        "name": "registerUser",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "username",
+                "type": "string"
+            }
+        ],
+        "name": "UserRegistered",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_userId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_password",
+                "type": "string"
+            }
+        ],
+        "name": "loginUser",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "users",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "username",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "password",
+                "type": "string"
+            },
+            {
+                "internalType": "bool",
+                "name": "isRegistered",
+                "type": "bool"
+            },
+            {
+                "internalType": "string",
+                "name": "email",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "age",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "dateOfPeriodDay",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "previousMenstrualProblems",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_userId",
+                "type": "uint256"
+            }
+        ],
+        "name": "viewUser",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "id",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "username",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "password",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "isRegistered",
+                        "type": "bool"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "email",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "age",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "dateOfPeriodDay",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "previousMenstrualProblems",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct UserRegistration.User",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
