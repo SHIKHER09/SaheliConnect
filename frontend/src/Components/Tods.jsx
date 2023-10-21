@@ -24,31 +24,31 @@ function Tods() {
   };
 
   return (
-    <div  style={{border:"2px",borderStyle:"double",borderColor:"black",backgroundColor:"whitesmoke",maxHeight:"40vh",minHeight:"5vh",width:"30vw",paddingLeft:"4vw",borderRadius:'20px'}}>
-      <h1 style={{marginLeft:"3vw"}}>Todo List</h1>
+    <div  style={{border:"2px",borderStyle:"double",borderColor:"black",backgroundColor:"rgb(175,185,192)",minHeight:"5vh",maxHeight:"40vh",width:"30vw",paddingLeft:"4vw",borderRadius:'20px',borderColor:"cyan",border:"0.5px",borderStyle:"groove"}}>
+      <h1 style={{marginLeft:"4.5vw",marginBottom:"2vh"}}>Todo List</h1>
       <input
         type="text"
         placeholder="Add a new task"
         value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)} style={{padding:"4px 8px",borderRadius:"30px"}}
+        onChange={(e) => setNewTodo(e.target.value)} style={{padding:"6px 9px",borderRadius:"30px",backgroundColor:"black",color:'white', fontSize:"18px",marginTop:"4px"}}
       />
-      <button onClick={addTodo} style={{padding:"4px 8px",borderRadius:"30px", marginLeft:"10px"}}>Add Task</button>
+      <button onClick={addTodo} style={{padding:"4px 10px",borderRadius:"30px", marginLeft:"10px",backgroundColor:"black",color:"white",fontSize:"17px"}}>Add Task</button>
       <br />
       <br />
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      <ul style={{ listStyleType:"none", padding: 0 }}>
         {todos.map((todo, index) => (
           <li key={index} style={{ marginBottom: '10px' }}>
             <span
-              style={{
-                textDecoration: todo.completed ? 'line-through' : 'none',
+              style={{fontSize:"19px",
+                textDecoration: todo.completed ? 'line-through' : 'circle',
                 marginRight: '10px',
               }}
               onClick={() => toggleTodo(index)}
             >
-              {todo.text}
+             ● {todo.text}
             </span>
             <button
-              style={{ backgroundColor: 'green', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer',padding:"4px 12px",borderRadius:"12px" }}
+              style={{ backgroundColor: 'green',  border: 'none', padding: '5px 10px', cursor: 'pointer',padding:"4px 12px",borderRadius:"12px",fontSize:"16px",color:"white" }}
               onClick={() => deleteTodo(index)}
             >
               Done  ✓

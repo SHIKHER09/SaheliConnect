@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import Web3 from 'web3';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,8 +14,30 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { TextareaAutosize } from '@mui/material';
+import ABI from './ABI.json';
 
-function Registration() {
+// function Registration() {
+//   const [name, setName] = useState('');
+//   const [age, setAge] = useState('');
+//   const [pdate, setPdate] = useState('');
+//   const [pproblem, setPproblem] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log({
+//         name,
+//         age,pdate,pproblem,
+//       email,
+//       password,
+//     });
+//   };
+const Registration = () => {
+  const [web3, setWeb3] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [accounts, setAccounts] = useState([]);
+
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [pdate, setPdate] = useState('');
@@ -22,14 +45,47 @@ function Registration() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    initWeb3();
+  }, []);
+
+  const initWeb3 = async () => {
+    if (window.ethereum) {
+      const web3 = new Web3(window.ethereum);
+      await window.ethereum.enable();
+      setWeb3(web3);
+      setAccounts(await web3.eth.getAccounts());
+    } else {
+      console.error('Web3 not found. Install MetaMask or use an Ethereum-enabled browser.');
+    }
+  };
+
+  useEffect(() => {
+    if (web3) {
+      initContract(); // Initialize the contract here
+    }
+  }, [web3]);
+
+  const initContract = () => {
+    const contractAddress = '0x8f36c9F0a2374a9E2f41f3F5589e16f4c27633e5';
+    const contract = new web3.eth.Contract(ABI, contractAddress);
+    setContract(contract);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({
-        name,
-        age,pdate,pproblem,
-      email,
-      password,
-    });
+    if (!contract || !name || !age || !pdate || !email || !password) {
+      return;
+    }
+
+    try {
+      const accounts = await web3.eth.getAccounts();
+      await contract.methods.registerUser(name, password, email, age, pdate, pproblem).send({ from: 0xf9E96A81bB67350b25dE76f696fb42A8FE5CC3D0 });
+      alert('User registered successfully.');
+    } catch (error) {
+      console.error(error);
+      alert('User registration failed.');
+    }
   };
 
   const defaultTheme = createTheme();

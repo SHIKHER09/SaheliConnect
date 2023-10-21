@@ -42,12 +42,12 @@ export default function MoreFeatures() {
       transform: `rotateX(${tiltStates[index].tiltY}deg) rotateY(${tiltStates[index].tiltX}deg)`,
       width: "15vw",
       height: "20vh",
-      backgroundColor: "gray",
+      background: `linear-gradient(${"#ffccff"}, ${"#afb9c0"})`,
       borderRadius: '20px',
       display: 'flex',
       alignItems: "center",
       justifyContent: "center",
-      boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.3)" 
+      boxShadow: "-0.1px -0.4px 3px rgba(0, 255, 255, 0.455), 5px 5px 10px rgba(0, 0, 0, 0.3)",
     };
 
     return (
@@ -65,12 +65,13 @@ export default function MoreFeatures() {
   };
 
   return (
-    <div style={{ height: "70vh" }}>
-      <h2 style={{ paddingLeft: "5vw" }}>More Features</h2>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8vw", padding: '5vmin' }}>
+    <div style={{ height: "70vh",paddingTop:"4vh",backgroundColor:"white" }}>
+      <h2 style={{ paddingLeft: "5vw",color:"black" ,fontSize:"26px"}}>More Features</h2>
+      
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8vw", padding: '5vmin',fontSize:"24px" }}>
         {featureData1.map((feature, index) => renderTiltBox(feature, index))}
       </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8vw", padding: '5vmin' }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8vw", padding: '5vmin',fontSize:"24px" }}>
         {featureData2.map((feature, index) => renderTiltBox(feature, featureData1.length + index))}
       </div>
     </div>
